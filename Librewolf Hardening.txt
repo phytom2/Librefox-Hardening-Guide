@@ -1,0 +1,32 @@
+Librewolf Hardening
+
+about:config
+
+beacon.enabled								true->false
+device.sensors.enabled							true->false
+device.sensors.motion.enabled						true->false
+device.sensors.orientation.enabled					true->false
+network.trr.confirmation_telemetry_enabled				true->false
+nimbus.telemetry.targetingContextEnabled				true->false
+telemetry.fog.init_on_shutdown						true->false
+media.peerconnection.enabled						true->false
+dom.battery.enabled							true->false
+dom.gamepad.enabled							true->false
+geo.enabled								true->false	
+geo.prompt.open_system_prefs						true->false
+dom.event.clipboardevents.enabled					true->false		
+dom.security.https_only_mode_ever_enabled				false->true
+privacy.antitracking.isolateContentScriptResources			false->true
+privacy.trackingprotection.allow_list.convenience.enabled		false->true
+privacy.trackingprotection.enabled					false->true
+privacy.trackingprotection.socialtracking.enabled			false->true
+privacy.fingerprintingProtection					false->true
+privacy.resistFingerprinting.pbmode					false->true
+privacy.resistFingerprinting.randomization.canvas.use_siphash		false->true	
+privacy.resistFingerprinting.randomization.daily_reset.enabled		false->true
+privacy.resistFingerprinting.randomization.daily_reset.private.enabled	false->true
+geo.provider.network.url						delete
+toolkit.telemetry.cachedProfileGroupID					delete
+toolkit.telemetry.dap.helper.hpke					delete
+toolkit.telemetry.dap.helper.url					delete
+toolkit.telemetry.dap.leader.hpke					delete
