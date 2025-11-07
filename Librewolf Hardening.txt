@@ -1,6 +1,8 @@
 Librewolf Hardening
 
-about:config
+Go to Searchbar
+Type: about:config
+Search for these configs (without the true/false, you change that yourself)
 
 beacon.enabled								true->false
 device.sensors.enabled							true->false
@@ -30,3 +32,4 @@ toolkit.telemetry.cachedProfileGroupID					delete
 toolkit.telemetry.dap.helper.hpke					delete
 toolkit.telemetry.dap.helper.url					delete
 toolkit.telemetry.dap.leader.hpke					delete
+
