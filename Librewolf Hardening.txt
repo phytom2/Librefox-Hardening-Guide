@@ -1,35 +1,99 @@
 Librewolf Hardening
 
-Go to Searchbar
-Type: about:config
-Search for these configs (without the true/false, you change that yourself)
 
-beacon.enabled								true->false
-device.sensors.enabled							true->false
-device.sensors.motion.enabled						true->false
-device.sensors.orientation.enabled					true->false
-network.trr.confirmation_telemetry_enabled				true->false
-nimbus.telemetry.targetingContextEnabled				true->false
-telemetry.fog.init_on_shutdown						true->false
-media.peerconnection.enabled						true->false
-dom.battery.enabled							true->false
-dom.gamepad.enabled							true->false
-geo.enabled								true->false	
-geo.prompt.open_system_prefs						true->false
-dom.event.clipboardevents.enabled					true->false		
-dom.security.https_only_mode_ever_enabled				false->true
-privacy.antitracking.isolateContentScriptResources			false->true
-privacy.trackingprotection.allow_list.convenience.enabled		false->true
-privacy.trackingprotection.enabled					false->true
-privacy.trackingprotection.socialtracking.enabled			false->true
-privacy.fingerprintingProtection					false->true
-privacy.resistFingerprinting.pbmode					false->true
-privacy.resistFingerprinting.randomization.canvas.use_siphash		false->true	
-privacy.resistFingerprinting.randomization.daily_reset.enabled		false->true
-privacy.resistFingerprinting.randomization.daily_reset.private.enabled	false->true
-geo.provider.network.url						delete
-toolkit.telemetry.cachedProfileGroupID					delete
-toolkit.telemetry.dap.helper.hpke					delete
-toolkit.telemetry.dap.helper.url					delete
-toolkit.telemetry.dap.leader.hpke					delete
+
+Click on the top searchbar and enter about:config.
+
+Search for each of the following configuration keys and adjust their values as indicated with double-click.
+
+
+
+
+beacon.enabled true->false
+#Disables web beacons — stops sites from sending hidden background pings for tracking.
+
+device.sensors.enabled true->false
+#Blocks access to all motion/orientation sensors — prevents motion-based fingerprinting.
+
+device.sensors.motion.enabled true->false
+#Specifically blocks motion sensors — stops tracking of device movement.
+
+device.sensors.orientation.enabled true->false
+#Disables orientation sensors — stops detection of screen tilts or angles.
+
+network.trr.confirmation_telemetry_enabled true->false
+#Stops telemetry about DNS-over-HTTPS — no reporting to Mozilla servers.
+
+nimbus.telemetry.targetingContextEnabled true->false
+#Disables feature experimentation telemetry — avoids targeted configuration experiments.
+
+telemetry.fog.init_on_shutdown true->false
+#Prevents telemetry framework initialization during shutdown — less data logging.
+
+media.peerconnection.enabled true->false
+#Disables WebRTC — stops IP leaks through video/audio calls (turn on if you use Discord or Meet).
+
+dom.battery.enabled true->false
+#Hides battery information — prevents sites from fingerprinting device power data.
+
+dom.gamepad.enabled true->false
+#Blocks Gamepad API — stops connected controllers from leaking unique hardware data.
+
+geo.enabled true->false
+#Disables geolocation — prevents websites from detecting your physical location.
+
+geo.prompt.open_system_prefs true->false
+#Stops Firefox from opening OS location settings — fully disables location prompts
+
+dom.event.clipboardevents.enabled true->false
+#Prevents websites from detecting copy/paste/cut actions — enhances privacy on input fields.
+
+datareporting.policy.dataSubmissionEnabled true->false
+#Stops all background data submission — no automatic telemetry uploads.
+
+dom.security.https_only_mode_ever_enabled false->true
+#Forces all connections through HTTPS — blocks insecure (HTTP) connections.
+
+privacy.antitracking.isolateContentScriptResources false->true
+#Isolates scripts per site — prevents trackers from sharing cached resources across domains.
+
+privacy.trackingprotection.allow_list.convenience.enabled false->true
+#Ensures tracking protection applies everywhere — no exceptions for “trusted” sites.
+
+privacy.trackingprotection.enabled false->true
+#Enables global tracking protection — blocks known tracking domains.
+
+privacy.trackingprotection.socialtracking.enabled false->true
+#Blocks social media trackers — protects against Facebook, Twitter, etc. embedding tracking scripts.
+
+privacy.fingerprintingProtection false->true
+#Activates anti-fingerprinting — standardizes browser characteristics to make tracking harder.
+
+privacy.resistFingerprinting.pbmode false->true
+#Applies fingerprinting protection even in private browsing — consistent defense.
+
+privacy.resistFingerprinting.randomization.canvas.use_siphash false->true
+#Adds randomness to canvas data — prevents pixel-based fingerprinting.
+
+privacy.resistFingerprinting.randomization.daily_reset.enabled false->true
+#Resets fingerprinting randomization daily — adds entropy to tracking resistance.
+
+privacy.resistFingerprinting.randomization.daily_reset.private.enabled false->true
+#Applies the same randomization reset daily in private mode — consistent privacy boost.
+
+geo.provider.network.url delete
+#Removes Google geolocation service URL — ensures no background geolocation requests.
+
+toolkit.telemetry.cachedProfileGroupID delete
+#Deletes telemetry ID — prevents persistent identification of your profile.
+
+toolkit.telemetry.dap.helper.hpke delete
+#Removes telemetry encryption helper — disables data submission support.
+
+toolkit.telemetry.dap.helper.url delete
+#Deletes telemetry endpoint — ensures no telemetry destination.
+
+toolkit.telemetry.dap.leader.hpke delete
+#Removes remaining telemetry encryption parameters — blocks telemetry communication entirely.
+
 
