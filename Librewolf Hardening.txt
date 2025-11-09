@@ -1,13 +1,6 @@
 Librewolf Hardening
 
-
-
-Click on the top searchbar and enter about:config.
-
-Search for each of the following configuration keys and adjust their values as indicated with double-click.
-
-
-
+about:config
 
 beacon.enabled true->false
 #Disables web beacons — stops sites from sending hidden background pings for tracking.
@@ -43,7 +36,7 @@ geo.enabled true->false
 #Disables geolocation — prevents websites from detecting your physical location.
 
 geo.prompt.open_system_prefs true->false
-#Stops Firefox from opening OS location settings — fully disables location prompts
+#Stops Firefox from opening OS location settings — fully disables location prompts.
 
 dom.event.clipboardevents.enabled true->false
 #Prevents websites from detecting copy/paste/cut actions — enhances privacy on input fields.
@@ -94,6 +87,13 @@ toolkit.telemetry.dap.helper.url delete
 #Deletes telemetry endpoint — ensures no telemetry destination.
 
 toolkit.telemetry.dap.leader.hpke delete
-#Removes remaining telemetry encryption parameters — blocks telemetry communication entirely.
+#Removes remaining telemetry encryption parameters — blocks telemetry communication entirely.ly.
 
+app.normandy.enabled tue->false
 
+app.normandy.api_url = delete
+
+network.captive-portal-service.enabled true->false
+
+network.http.referer.XOriginTrimmingPolicy	2
+media.peerconnection.ice.proxy_only_if_behind_proxy false->true
