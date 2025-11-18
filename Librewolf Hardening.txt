@@ -74,12 +74,4 @@ toolkit.telemetry.dap.helper.url delete
 toolkit.telemetry.dap.leader.hpke delete
 #Removes remaining telemetry encryption parameters — blocks telemetry communication entirely.ly.
 
-app.normandy.enabled tue->false
-
-app.normandy.api_url = delete
-
-network.captive-portal-service.enabled true->false
-
-network.http.referer.XOriginTrimmingPolicy	2
-media.peerconnection.ice.proxy_only_if_behind_proxy false->true
 
