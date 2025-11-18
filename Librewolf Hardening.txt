@@ -59,21 +59,6 @@ privacy.trackingprotection.enabled false->true
 privacy.trackingprotection.socialtracking.enabled false->true
 #Blocks social media trackers — protects against Facebook, Twitter, etc. embedding tracking scripts.
 
-privacy.fingerprintingProtection false->true
-#Activates anti-fingerprinting — standardizes browser characteristics to make tracking harder.
-
-privacy.resistFingerprinting.pbmode false->true
-#Applies fingerprinting protection even in private browsing — consistent defense.
-
-privacy.resistFingerprinting.randomization.canvas.use_siphash false->true
-#Adds randomness to canvas data — prevents pixel-based fingerprinting.
-
-privacy.resistFingerprinting.randomization.daily_reset.enabled false->true
-#Resets fingerprinting randomization daily — adds entropy to tracking resistance.
-
-privacy.resistFingerprinting.randomization.daily_reset.private.enabled false->true
-#Applies the same randomization reset daily in private mode — consistent privacy boost.
-
 geo.provider.network.url delete
 #Removes Google geolocation service URL — ensures no background geolocation requests.
 
@@ -97,3 +82,4 @@ network.captive-portal-service.enabled true->false
 
 network.http.referer.XOriginTrimmingPolicy	2
 media.peerconnection.ice.proxy_only_if_behind_proxy false->true
+
