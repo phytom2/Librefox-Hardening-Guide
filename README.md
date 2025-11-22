@@ -5,6 +5,9 @@ Search in Searchbar: about:config
 copy the text before true/false and change it according to the instructions
 
 
+
+
+
 FOR THE user.js FILE:
 
 1. Locate the LibreWolf Profile Directory
