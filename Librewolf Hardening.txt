@@ -1,96 +1,184 @@
-Librewolf Hardening
+LIBREWOLF HARDENING GUIDE
 
 about:config
 
-beacon.enabled true->false
-#Disables web beacons — stops sites from sending hidden background pings for tracking.
 
-device.sensors.enabled true->false
-#Blocks access to all motion/orientation sensors — prevents motion-based fingerprinting.
 
-device.sensors.motion.enabled true->false
-#Specifically blocks motion sensors — stops tracking of device movement.
+TRACKING & TELEMETRY
 
-device.sensors.orientation.enabled true->false
-#Disables orientation sensors — stops detection of screen tilts or angles.
+beacon.enabled
+Change: true -> false
+Description: Disables web beacons. Stops sites from sending hidden
+background pings for tracking.
 
-network.trr.confirmation_telemetry_enabled true->false
-#Stops telemetry about DNS-over-HTTPS — no reporting to Mozilla servers.
+network.trr.confirmation_telemetry_enabled
+Change: true -> false
+Description: Stops telemetry about DNS-over-HTTPS. No reporting to
+Mozilla servers.
 
-nimbus.telemetry.targetingContextEnabled true->false
-#Disables feature experimentation telemetry — avoids targeted configuration experiments.
+nimbus.telemetry.targetingContextEnabled
+Change: true -> false
+Description: Disables feature experimentation telemetry. Avoids targeted
+configuration experiments.
 
-telemetry.fog.init_on_shutdown true->false
-#Prevents telemetry framework initialization during shutdown — less data logging.
+telemetry.fog.init_on_shutdown
+Change: true -> false
+Description: Prevents telemetry framework initialization during shutdown.
+Less data logging.
 
-media.peerconnection.enabled true->false
-#Disables WebRTC — stops IP leaks through video/audio calls (turn on if you use Discord or Meet).
+datareporting.policy.dataSubmissionEnabled
+Change: true -> false
+Description: Stops all background data submission. No automatic telemetry
+uploads.
 
-dom.battery.enabled true->false
-#Hides battery information — prevents sites from fingerprinting device power data.
+toolkit.telemetry.cachedProfileGroupID
+Action: DELETE
+Description: Deletes telemetry ID. Prevents persistent identification of
+your profile.
 
-dom.gamepad.enabled true->false
-#Blocks Gamepad API — stops connected controllers from leaking unique hardware data.
+toolkit.telemetry.dap.helper.hpke
+Action: DELETE
+Description: Removes telemetry encryption helper. Disables data submission
+support.
 
-geo.enabled true->false
-#Disables geolocation — prevents websites from detecting your physical location.
+toolkit.telemetry.dap.helper.url
+Action: DELETE
+Description: Deletes telemetry endpoint. Ensures no telemetry destination.
 
-geo.prompt.open_system_prefs true->false
-#Stops Firefox from opening OS location settings — fully disables location prompts.
+toolkit.telemetry.dap.leader.hpke
+Action: DELETE
+Description: Removes remaining telemetry encryption parameters. Blocks
+telemetry communication entirely.
 
-dom.event.clipboardevents.enabled true->false
-#Prevents websites from detecting copy/paste/cut actions — enhances privacy on input fields.
 
-datareporting.policy.dataSubmissionEnabled true->false
-#Stops all background data submission — no automatic telemetry uploads.
 
-dom.security.https_only_mode_ever_enabled false->true
-#Forces all connections through HTTPS — blocks insecure (HTTP) connections.
+SENSORS & DEVICE INFORMATION
 
-privacy.antitracking.isolateContentScriptResources false->true
-#Isolates scripts per site — prevents trackers from sharing cached resources across domains.
+device.sensors.enabled
+Change: true -> false
+Description: Blocks access to all motion/orientation sensors. Prevents
+motion-based fingerprinting.
 
-privacy.trackingprotection.allow_list.convenience.enabled true->false
-#Ensures tracking protection applies everywhere — no exceptions for “trusted” sites.
+device.sensors.motion.enabled
+Change: true -> false
+Description: Specifically blocks motion sensors. Stops tracking of device
+movement.
 
-privacy.trackingprotection.enabled false->true
-#Enables global tracking protection — blocks known tracking domains.
+device.sensors.orientation.enabled
+Change: true -> false
+Description: Disables orientation sensors. Stops detection of screen tilts
+or angles.
 
-privacy.trackingprotection.socialtracking.enabled false->true
-#Blocks social media trackers — protects against Facebook, Twitter, etc. embedding tracking scripts.
+dom.battery.enabled
+Change: true -> false
+Description: Hides battery information. Prevents sites from fingerprinting
+device power data.
 
-geo.provider.network.url delete
-#Removes Google geolocation service URL — ensures no background geolocation requests.
+dom.gamepad.enabled
+Change: true -> false
+Description: Blocks Gamepad API. Stops connected controllers from leaking
+unique hardware data.
 
-toolkit.telemetry.cachedProfileGroupID delete
-#Deletes telemetry ID — prevents persistent identification of your profile.
 
-toolkit.telemetry.dap.helper.hpke delete
-#Removes telemetry encryption helper — disables data submission support.
 
-toolkit.telemetry.dap.helper.url delete
-#Deletes telemetry endpoint — ensures no telemetry destination.
+WEBRTC & NETWORK
 
-toolkit.telemetry.dap.leader.hpke delete
-#Removes remaining telemetry encryption parameters — blocks telemetry communication entirely.ly.
+media.peerconnection.enabled
+Change: true -> false
+Description: Disables WebRTC. Stops IP leaks through video/audio calls.
+NOTE: Turn on if you use Discord or Meet.
 
-app.normandy.enabled true->false
-#stops remotely changing your browser settings or installing experimental add-ons without your explicit permission.
+network.captive-portal-service.enabled
+Change: true -> false
+Description: Stops the constant "pings" to Mozilla servers every time you
+connect to a network.
 
-app.normandy.api_url = delete
-#This is the web address the browser checks to receive the instructions mentioned above
+browser.places.speculativeConnect.enabled
+Change: true -> false
+Description: Stops background connections that predict your keystrokes.
 
-network.captive-portal-service.enabled true->false
-#stops the constant "pings" to Mozilla servers every time you connect to a network.
+
+
+GEOLOCATION
+
+geo.enabled
+Change: true -> false
+Description: Disables geolocation. Prevents websites from detecting your
+physical location.
+
+geo.prompt.open_system_prefs
+Change: true -> false
+Description: Stops Firefox from opening OS location settings. Fully
+disables location prompts.
+
+geo.provider.network.url
+Action: DELETE
+Description: Removes Google geolocation service URL. Ensures no background
+geolocation requests.
+
+
+
+CLIPBOARD & INPUT PRIVACY
+
+dom.event.clipboardevents.enabled
+Change: true -> false
+Description: Prevents websites from detecting copy/paste/cut actions.
+Enhances privacy on input fields.
+HTTPS & SECURITY
+
+dom.security.https_only_mode_ever_enabled
+Change: false -> true
+Description: Forces all connections through HTTPS. Blocks insecure (HTTP)
+connections.
+
+
+
+TRACKING PROTECTION
+
+privacy.antitracking.isolateContentScriptResources
+Change: false -> true
+Description: Isolates scripts per site. Prevents trackers from sharing
+cached resources across domains.
+
+privacy.trackingprotection.allow_list.convenience.enabled
+Change: true -> false
+Description: Ensures tracking protection applies everywhere. No exceptions
+for "trusted" sites.
+
+privacy.trackingprotection.enabled
+Change: false -> true
+Description: Enables global tracking protection. Blocks known tracking
+domains.
+
+privacy.trackingprotection.socialtracking.enabled
+Change: false -> true
+Description: Blocks social media trackers. Protects against Facebook,
+Twitter, etc. embedding tracking scripts.
+
+
+
+REFERER HEADERS
 
 network.http.referer.XOriginPolicy
-#Only sends "Referer" headers when the hostnames match (stops cross-site tracking).
+Setting: 1
+Description: Only sends "Referer" headers when the hostnames match. Stops
+cross-site tracking.
 
-network.http.referer.XOriginTrimmingPolicy	2
-#Strips the "Referer" header to just the domain (removes specific page paths).
+network.http.referer.XOriginTrimmingPolicy
+Setting: 2
+Description: Strips the "Referer" header to just the domain. Removes
+specific page paths.
 
-browser.places.speculativeConnect.enabled ture->false
-#stops background connections that predict your keystrokes.
 
-media.peerconnection.ice.proxy_only_if_behind_proxy false -> true
-#force the browser to use the proxy for WebRTC connections.
+
+NORMANDY (REMOTE SETTINGS)
+
+app.normandy.enabled
+Change: true -> false
+Description: Stops remotely changing your browser settings or installing
+experimental add-ons without your explicit permission.
+
+app.normandy.api_url
+Action: DELETE
+Description: This is the web address the browser checks to receive the
+instructions mentioned above.
