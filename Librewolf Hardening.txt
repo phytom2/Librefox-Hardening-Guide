@@ -50,7 +50,7 @@ dom.security.https_only_mode_ever_enabled false->true
 privacy.antitracking.isolateContentScriptResources false->true
 #Isolates scripts per site — prevents trackers from sharing cached resources across domains.
 
-privacy.trackingprotection.allow_list.convenience.enabled false->true
+privacy.trackingprotection.allow_list.convenience.enabled true->false
 #Ensures tracking protection applies everywhere — no exceptions for “trusted” sites.
 
 privacy.trackingprotection.enabled false->true
@@ -74,4 +74,23 @@ toolkit.telemetry.dap.helper.url delete
 toolkit.telemetry.dap.leader.hpke delete
 #Removes remaining telemetry encryption parameters — blocks telemetry communication entirely.ly.
 
+app.normandy.enabled true->false
+#stops remotely changing your browser settings or installing experimental add-ons without your explicit permission.
 
+app.normandy.api_url = delete
+#This is the web address the browser checks to receive the instructions mentioned above
+
+network.captive-portal-service.enabled true->false
+#stops the constant "pings" to Mozilla servers every time you connect to a network.
+
+network.http.referer.XOriginPolicy
+#Only sends "Referer" headers when the hostnames match (stops cross-site tracking).
+
+network.http.referer.XOriginTrimmingPolicy	2
+#Strips the "Referer" header to just the domain (removes specific page paths).
+
+browser.places.speculativeConnect.enabled ture->false
+#stops background connections that predict your keystrokes.
+
+media.peerconnection.ice.proxy_only_if_behind_proxy false -> true
+#force the browser to use the proxy for WebRTC connections.
